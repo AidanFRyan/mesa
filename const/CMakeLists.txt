@@ -1,0 +1,1 @@
+add_library(const SHARED public/const_def.f90 public/const_lib.f90)
