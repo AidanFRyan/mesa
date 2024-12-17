@@ -42,7 +42,7 @@ OBJS = $(patsubst %.f,%.o,$(patsubst %.f90,%.o,$(SRCS)))
 
 $(LIB) : $(OBJS) $(DEPS_OTHER)
 ifneq ($(QUIET),)
-	@echo LIB_TOOL $(LIB) ${OBJS} ${LOAD_OTHER}
+	@echo LIB_TOOL $(LIB)
 	@$(LIB_TOOL) $(LIB) $(OBJS) $(LOAD_OTHER)
 else
 	$(LIB_TOOL) $(LIB) $(OBJS) $(LOAD_OTHER)
