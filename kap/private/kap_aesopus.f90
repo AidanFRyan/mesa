@@ -83,11 +83,11 @@ contains
 
     character(len=80) :: group_name ! output buffer
 
-    character(len=30) :: efmt = '(A14, 99ES12.3)'
-    character(len=30) :: ffmt = '(A14, 99F8.3)'
-    character(len=30) :: ifmt = '(A14, I4)'
+    character(len=30), parameter :: efmt = '(A14, 99ES12.3)'
+    character(len=30), parameter :: ffmt = '(A14, 99F8.3)'
+    character(len=30), parameter :: ifmt = '(A14, I4)'
 
-    logical :: file_exists 
+    logical :: file_exists
 
     ! get the filename
     filename = trim(aesopus_filename)
@@ -116,7 +116,7 @@ contains
 
     ! open file (read-only)
     hi = hdf5io_t(filename, OPEN_FILE_RO)
-    
+
     if (rq% show_info) write(*,*) 'AESOPUS composition parameters'
 
     ! read composition parameters
@@ -175,7 +175,7 @@ contains
     call hi% alloc_read_dset('Zs', kA% Zs)
     kA% num_Zs = SIZE(kA% Zs)
     if (rq% show_info) write(*,ifmt) "num Zs =", kA% num_Zs
-    
+
     if (debug) write(*,*) 'Zs', kA% Zs
 
     if (rq% show_info) then
@@ -201,7 +201,7 @@ contains
        ! get group name and open group
 
        write(group_name, 100) kA% Zs(n)
-100    format(F8.6)  
+100    format(F8.6)
 
        if (rq% show_info) then
           write(*,'(A)')

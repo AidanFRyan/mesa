@@ -3,8 +3,6 @@ import numpy as np
 import os
 import mesa_reader as mr
 
-# pip install git+https://github.com/wmwolf/py_mesa_reader.git
-
 # if the directory plt_out/ does not exits, make it
 if not os.path.exists("plt_out"):
     os.makedirs("plt_out")
@@ -151,7 +149,7 @@ ax4.legend(loc='upper left')
 ax4b = ax4.twinx()
 ax4b.semilogy(h.star_age[mask], h.R[mask], ls='--', color='C1')
 ax4.set_ylabel(r"Eff. Temp. [K]", color='C0')
-ax4b.set_ylabel('Radius [$R_{\odot}$]', color='C1')
+ax4b.set_ylabel(r"Radius [$R_{\odot}$]", color='C1')
 ax4.set_xticklabels([])
 
 # mass loss and envelope mass

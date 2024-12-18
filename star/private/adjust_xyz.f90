@@ -100,7 +100,7 @@
          nz = max(s% nz, s% prev_mesh_nz)
          chem_id => s% chem_id
          num_reactions = s% num_reactions
-         
+
          write(*,*) 'change to "' // trim(new_net_name)//'"'
          write(*,*) 'number of species', s% species
 
@@ -131,7 +131,7 @@
          if (associated(s% d_eos_dxa)) deallocate(s% d_eos_dxa)
          allocate(s% d_eos_dxa(num_eos_d_dxa_results, species, nz + nz_alloc_extra), stat=ierr)
          if (ierr /= 0) return
-         
+
          call realloc(s% xa_sub_xa_start); if (ierr /= 0) return
          call realloc(s% xa_start); if (ierr /= 0) return
          call realloc(s% prev_mesh_xa); if (ierr /= 0) return
@@ -139,13 +139,13 @@
          if (s% generations > 1) call do_xa(s% nz_old, s% xh_old, s% xa_old)
 
          call realloc_reactions(s% raw_rate)
-         if(ierr/=0) return 
+         if(ierr/=0) return
          call realloc_reactions(s% screened_rate)
-         if(ierr/=0) return 
+         if(ierr/=0) return
          call realloc_reactions(s% eps_nuc_rate)
-         if(ierr/=0) return 
+         if(ierr/=0) return
          call realloc_reactions(s% eps_neu_rate)
-         if(ierr/=0) return 
+         if(ierr/=0) return
 
          s% need_to_setvars = .true.
          s% prev_mesh_species_or_nvar_hydro_changed = .true.
@@ -668,7 +668,7 @@
          end if
 
          call set_abundance_ratio(s% id, ih1, ihe4, ratio, nzlo, nzhi, ierr)
-         
+
       end subroutine set_y
 
 
@@ -863,7 +863,7 @@
          end if
          if (abs(1d0-sum(xa_new(1:species))) > 1d-6) then
             ierr = -1
-            s% retry_message = 'set_composition requires new mass fractions to add to 1.'
+            s% retry_message = 'set_composition requires new mass fractions to add to 1'
             if (s% report_ierr) write(*, *) s% retry_message
             return
          end if
@@ -919,7 +919,7 @@
             end do
             if (abs(1d0 - sum(xa(1:species))) > 1d-2) then
                write(*,'(a)') &
-                  'get_xa_for_accretion: accretion species mass fractions do not add to 1.0'
+                  'get_xa_for_accretion: accretion species mass fractions do not add to 1'
                write(*,1) 'sum(xa(1:species))', sum(xa(1:species))
                do j=1,s% num_accretion_species
                   write(*,2) trim(s% accretion_species_id(j)), j, xa(j)
